@@ -658,7 +658,9 @@ require('lazy').setup({
         --
         --[[
         rust_analyzer = {
-          capabilities = capabilities,
+          diagnostic = {
+            refreshSupport = false,
+          },
           imports = {
             granularity = {
               group = 'module',
@@ -907,6 +909,8 @@ require('lazy').setup({
             if cmp.visible() and has_words_before() then
               --cmp.mapping.select_next_item()
               cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+            elseif luasnip.locally_jumpable(1) then
+              luasnip.jump(1)
             else
               fallback()
             end
@@ -949,7 +953,7 @@ require('lazy').setup({
           },
           { name = 'nvim_lsp_signature_help', group_index = 1, priority = 600 },
           { name = 'nvim_lsp', group_index = 1, priority = 500 },
-          { name = 'luasnip', group_index = 1, priority = 450 },
+          --{ name = 'luasnip', group_index = 1, priority = 450 },
           { name = 'path', group_index = 1, priority = 200 },
           { name = 'copilot', group_index = 1, priority = 10, keyword_length = 1 },
         },
