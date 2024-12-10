@@ -454,11 +454,12 @@ require('lazy').setup({
     },
   },
   { 'Bilal2453/luvit-meta', lazy = true },
-  { 'folke/neoconf.nvim' },
+  { 'folke/neoconf.nvim', lazy = false, config = true, priority = 500 },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
     dependencies = {
+      { 'folke/neoconf.nvim', lazy = true, config = true, priority = 500 },
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
