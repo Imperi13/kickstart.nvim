@@ -837,6 +837,12 @@ require('lazy').setup({
           require('luasnip').jump(direction)
         end,
       },
+      documentation = {
+        auto_show = true,
+      },
+      signature = {
+        enabled = true,
+      },
       sources = {
         providers = {
           lsp = { fallback_for = { 'lazydev' } },
