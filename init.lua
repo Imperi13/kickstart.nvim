@@ -840,6 +840,11 @@ require('lazy').setup({
         end,
       },
       completion = {
+        menu = {
+          auto_show = function(ctx)
+            return ctx.mode ~= 'cmdline' and not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+          end,
+        },
         documentation = {
           auto_show = true,
         },
