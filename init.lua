@@ -839,16 +839,17 @@ require('lazy').setup({
           require('luasnip').jump(direction)
         end,
       },
-      documentation = {
-        auto_show = true,
+      completion = {
+        documentation = {
+          auto_show = true,
+        },
       },
       signature = {
         enabled = true,
       },
       sources = {
         providers = {
-          lsp = { fallback_for = { 'lazydev' } },
-          lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+          lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', fallbacks = { 'lsp' } },
           copilot = {
             name = 'copilot',
             module = 'blink-cmp-copilot',
@@ -856,10 +857,7 @@ require('lazy').setup({
             async = true,
           },
         },
-        default = { 'lsp', 'path', 'buffer' },
-        completion = {
-          enabled_providers = { 'lsp', 'path', 'buffer', 'lazydev', 'copilot' },
-        },
+        default = { 'lsp', 'path', 'buffer', 'lazydev', 'copilot' },
       },
     },
 
